@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Fade } from 'react-reveal'
 import { loadRequest } from '../../../store/ducks/pokemons/actions';
 import { ApplicationState } from '../../../store';
 import PokemonCard from '../../core/PokemonCard'
 import { List } from './styled';
-import { Fade } from 'react-reveal'
 
 const PokemonsList = () => {
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ const PokemonsList = () => {
 
   useEffect(() => {
     dispatch(loadRequest())
-  }, []);
+  }, [dispatch]);
 
   return (
     <Fade bottom>
