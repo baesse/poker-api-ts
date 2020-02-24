@@ -1,8 +1,11 @@
-import { all, takeLatest } from "redux-saga/effects";
-import { RepositoriesTypes } from "./repositories/types";
+import { all } from 'redux-saga/effects';
 
-import { load } from "./repositories/sagas";
+import * as RepositoriesSagas from './repositories/sagas';
+import * as PokemonsSaga from './pokemons/sagas';
 
 export default function* rootSaga() {
-  return yield all([takeLatest(RepositoriesTypes.LOAD_REQUEST, load)]);
+  return yield all([
+    RepositoriesSagas.watcherSaga(),
+    PokemonsSaga.watcherSaga()
+  ]);
 }

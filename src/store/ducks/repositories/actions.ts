@@ -1,6 +1,6 @@
-import { action } from "typesafe-actions";
+import { action } from 'typesafe-actions';
 
-import { RepositoriesTypes, Repository } from "./types";
+import { RepositoriesTypes, Repository } from './types';
 
 export const loadRequest = () => action(RepositoriesTypes.LOAD_REQUEST);
 export const loadSuccess = (data: Repository[]) =>
