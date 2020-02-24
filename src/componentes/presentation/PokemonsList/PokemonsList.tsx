@@ -2,7 +2,9 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadRequest } from '../../../store/ducks/pokemons/actions';
 import { ApplicationState } from '../../../store';
-
+import PokemonCard from '../../core/PokemonCard'
+import { List } from './styled';
+import { Fade } from 'react-reveal'
 
 const PokemonsList = () => {
   const dispatch = useDispatch();
@@ -15,11 +17,14 @@ const PokemonsList = () => {
   }, []);
 
   return (
-    <div>
-      {PokemonsReducer.data.map(pokemon => {
-        return <><img src={pokemon.sprites.back_default} /></>;
-      })}
-    </div>
+    <Fade bottom>
+      <List>
+        {PokemonsReducer.data.map(pokemon => {
+          return <PokemonCard pokemon={pokemon} />;
+        })}
+      </List>
+    </Fade>
+
   );
 };
 
