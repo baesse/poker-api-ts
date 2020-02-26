@@ -8,27 +8,44 @@ const INITIAL_STATE: PokemonsState = {
 };
 
 const reducer: Reducer<PokemonsState> = (state = INITIAL_STATE, action) => {
-  switch (action.type) {
-    case PokemonTypes.LOAD_REQUEST:
-      return { ...state, loading: true };
-    case PokemonTypes.LOAD_SUCCESS:
-      return {
-        ...state,
-        loading: false,
-        error: false,
-        data: action.payload.data
-      };
-
-    case PokemonTypes.LOAD_FAILURE:
-      return {
-        ...state,
-        loading: false,
-        error: true,
-        data: []
-      };
-    default:
-      return state;
-  }
+  const reducerSelfTypes = {
+    [PokemonTypes.LOAD_REQUEST]: { ...state, loading: true },
+    [PokemonTypes.LOAD_SUCCESS]: {
+      ...state,
+      loading: false,
+      error: false,
+      data: action.payload?.data
+    },
+    [PokemonTypes.LOAD_FAILURE]: {
+      ...state,
+      loading: false,
+      error: true,
+      data: []
+    }
+  };
+  return reducerSelfTypes[action.type] || state;
 };
 
 export default reducer;
+
+// switch (action.type) {
+//   case PokemonTypes.LOAD_REQUEST:
+//     return { ...state, loading: true };
+//   case PokemonTypes.LOAD_SUCCESS:
+//     return {
+//       ...state,
+//       loading: false,
+//       error: false,
+//       data: action.payload.data
+//     };
+
+//   case PokemonTypes.LOAD_FAILURE:
+//     return {
+//       ...state,
+//       loading: false,
+//       error: true,
+//       data: []
+//     };
+//   default:
+//     return state;
+// }

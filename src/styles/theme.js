@@ -22,7 +22,6 @@ export default createGlobalStyle`
   }
   html{
     scroll-behavior: smooth;
-    background-color: #a3a3a3;
     padding: 20px
   }
   body,

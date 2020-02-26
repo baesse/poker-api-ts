@@ -8,7 +8,7 @@ interface OwnProps {
 }
 
 const PokemonCard: React.FunctionComponent<OwnProps> = ({ pokemon }) => {
-  const { data } = usePalette(pokemon.sprites.front_default)
+  const { data } = usePalette(pokemon.sprites.front_default);
 
   return (
     <CardBody shadow={data.muted}>
