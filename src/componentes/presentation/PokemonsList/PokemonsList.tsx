@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Fade } from 'react-reveal'
 import { loadRequest } from '../../../store/ducks/pokemons/actions';
 import { ApplicationState } from '../../../store';
-import PokemonCard from '../../core/PokemonCard'
+import PokemonCard from '../../core/PokemonCard';
 import { List } from './styled';
 
 const PokemonsList = () => {
@@ -13,18 +12,15 @@ const PokemonsList = () => {
   );
 
   useEffect(() => {
-    dispatch(loadRequest())
+    dispatch(loadRequest());
   }, [dispatch]);
 
   return (
-    <Fade bottom>
-      <List>
-        {PokemonsReducer.data.map(pokemon => {
-          return <PokemonCard pokemon={pokemon} />;
-        })}
-      </List>
-    </Fade>
-
+    <List>
+      {PokemonsReducer.data.map(pokemon => {
+        return <PokemonCard key={pokemon.name} pokemon={pokemon} />;
+      })}
+    </List>
   );
 };
 

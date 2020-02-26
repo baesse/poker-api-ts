@@ -1,13 +1,14 @@
 import React from 'react';
-import PokemonsList from './componentes/presentation/PokemonsList';
 import { Provider } from 'react-redux';
+import PokemonsList from './componentes/presentation/PokemonsList';
 import store from './store';
+import GlobalTheme from './styles/theme'
+
 function App() {
   return (
     <Provider store={store}>
-      <div className="App">
-        <PokemonsList />
-      </div>
+      <PokemonsList />
+      <GlobalTheme />
     </Provider>
   );
 }
